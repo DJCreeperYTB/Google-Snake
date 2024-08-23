@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classement des Speedruns - Google Snake</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        // Fonction pour convertir le temps au format mm:ss:ms en millisecondes
+        function timeToMilliseconds(time) {
+            if (time === 'NA') return Infinity; // Si le temps est non applicable
+            var parts = time.split(':');
+            var minutes = parseInt(parts[0], 10);
+            var seconds = parseInt(parts[1], 10);
+            var milliseconds = parseInt(parts[2], 10);
+            return (minutes * 60 * 1000) + (seconds * 1000) + milliseconds;
+        }
+
+        // Fonction pour trier le tableau
+        function sortTable() {
+            var table = document.getElementById("leaderboard");
+            var rows = Array.from(table.getElementsByTagName("tbody")[0].rows);
+
+            rows.sort(function (a, b) {
+                var scoreA = parseInt(a.cells[1].innerText);
+                var scoreB = parseInt(b.cells[1].innerText);
+                var timeA = timeToMilliseconds(a.cells[2].innerText);
+                var timeB = timeToMilliseconds(b.cells[2].innerText);
+
+                if (scoreA !== scoreB) {
+                    return scoreB - scoreA; // Trier par score décroissant
+                } else {
+                    return timeA - timeB; // En cas d'égalité, trier par temps croissant
+                }
+            });
+
+            // Réorganiser les lignes du tableau
+            var tbody = table.getElementsByTagName("tbody")[0];
+            tbody.innerHTML = ""; // Vider le tableau actuel
+            rows.forEach(function (row) {
+                tbody.appendChild(row); // Ajouter les lignes triées
+            });
+        }
+
+        // Appel de la fonction de tri après le chargement de la page
+        window.onload = sortTable;
+    </script>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center">Classement caisse - Google Snake</h1>
+    
+    <table id="leaderboard" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Pseudo</th>
+                <th>Score</th>
+                <th>Temps</th>
+                <th>25 Apple</th>
+                <th>50 Apple</th>
+                <th>100 Apple</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>DJCreeper</td>
+                <td>6</td>
+                <td>00:42:120</td>
+                <td>NA</td>
+                <td>NA</td>
+                <td>NA</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
