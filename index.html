@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Snake Speedruns</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        function redirectToLeaderboard() {
+            // Obtenir la valeur sélectionnée dans le formulaire de recherche
+            var categorie = document.getElementById("search_categorie").value;
+
+            // Convertir les sélections en chiffres correspondants
+            var categorieMap = {
+                "classic": "classic.html",
+                "murs": "murs.html",
+                "teleportation": "teleportation.html",
+                "fromage": "fromage.html",
+                "no-walls": "no-walls.html",
+                "changer-sens": "changer-sens.html",
+                "pomme-volante": "pomme-volante.html",
+                "yin-yang": "yin-yang.html",
+                "cle": "cle.html",
+                "caisse": "caisse.html",
+                "poison": "poison.html",
+                "pomme-invisible": "pomme-invisible.html",
+                "capture-drapeau": "capture-drapeau.html",
+                "pierre": "pierre.html",
+                "light": "light.html",
+                "pomme-protegee": "pomme-protegee.html",
+                "circulation": "circulation.html",
+                "hot-dog": "hot-dog.html",
+                "immortalite": "immortalite.html",
+                "mixeur": "mixeur.html"
+            };
+
+            // Récupérer le nom de la page correspondante à la catégorie sélectionnée
+            var pageName = categorieMap[categorie];
+
+            // Rediriger vers la page générée
+            window.location.href = pageName;
+        }
+    </script>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center">Google Snake Speedruns</h1>
+    <p class="text-center">Sélectionnez une catégorie de speedrun, recherchez les résultats existants, ou soumettez votre propre performance par mail : djcreeper.musique@gmail.com ou sur Discord : djcreeperytb</p>
+
+    <!-- Formulaire de recherche de speedruns -->
+    <h3>Rechercher un speedrun</h3>
+    <form onsubmit="redirectToLeaderboard(); return false;" class="mb-5">
+        <div class="form-group">
+            <label for="search_categorie">Catégorie :</label>
+            <select class="form-control" id="search_categorie" name="categorie" required>
+                <option value="classic">Classique</option>
+                <option value="murs">Murs</option>
+                <option value="teleportation">Téléportation</option>
+                <option value="fromage">Fromage</option>
+                <option value="no-walls">Sans murs</option>
+                <option value="changer-sens">Changer de sens</option>
+                <option value="pomme-volante">Pomme volante</option>
+                <option value="yin-yang">Yin et yang</option>
+                <option value="cle">Clé</option>
+                <option value="caisse">Caisse</option>
+                <option value="poison">Poison</option>
+                <option value="pomme-invisible">Pomme invisible</option>
+                <option value="capture-drapeau">Capture de drapeau</option>
+                <option value="pierre">Pierre</option>
+                <option value="light">Light</option>
+                <option value="pomme-protegee">Pomme protégée</option>
+                <option value="circulation">Circulation</option>
+                <option value="hot-dog">Hot-dog</option>
+                <option value="immortalite">Immortalité</option>
+                <option value="mixeur">Mixeur</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Rechercher</button>
+    </form>
+</div>
+
+</body>
+</html>
